@@ -3,6 +3,8 @@
 Angular Strap Dynamic Select add-on
 ===================================
 
+[![Join the chat at https://gitter.im/OptimalBPM/angular-schema-form-dynamic-select](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/OptimalBPM/angular-schema-form-dynamic-select?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The dynamic select add-on uses [angular-strap-select](https://github.com/mgcrea/angular-strap/tree/master/src/select)
  to provide a drop down interface to [angular-schema-form](https://github.com/Textalk/angular-schema-form). 
 
