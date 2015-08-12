@@ -161,7 +161,6 @@ testApp.controller("appController", ["$scope", "$http", function ($scope, $http)
                     }
                 }
             }
-
         },
         required: ["select", "multiselect"]
     };
@@ -313,6 +312,37 @@ testApp.controller("appController", ["$scope", "$http", function ($scope, $http)
                     "type": "strapselect"
                 }
             ]
+        },
+        {
+            "type": "help",
+            "helpvalue" : 
+                "<h4>Support for fieldAddonLeft and fieldAddonRight</h4>" +
+                "<p>Standard angular-schema-form selects don't support the fieldAddonLeft and fieldAddonRight options " +
+                "because Bootstrap doesn't support the input-group-addon class with selects. With this library, selects " +
+                "are composed from a button, which enables the use of these options.</p>"
+        },
+        {
+            "key": "select",
+            "title": "Single select strap-select, demonstrating support for fieldAddonLeft and fieldAddonRight.",
+            "description": null,
+            "fieldAddonLeft": "Left",
+            "fieldAddonRight": "Right"           
+        },
+        {
+            "key": "multiselect",
+            "title": "Multi select strap-select, demonstrating support for fieldAddonLeft and fieldAddonRight.",
+            "type": "strapselect",
+            "placeholder": "My items feel unselected. Or you selected text3 in the selector above me.",
+            "description": null,
+            "options": {
+                "multiple": "true",
+            },
+            "titleMap": [
+                {"value": "value1", "name": "text1"},
+                {"value": "value2", "name": "text2"}
+            ],
+            "fieldAddonLeft": "Left",
+            "fieldAddonRight": "Right"    
         },
         {
             type: "submit",
