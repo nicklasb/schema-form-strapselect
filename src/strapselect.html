@@ -3,22 +3,36 @@
     <label class="control-label {{form.labelHtmlClass}}" ng-show="showTitle()">{{form.title}}</label>
 
     <div class="form-group {{form.fieldHtmlClass}}" ng-init="populateTitleMap(form)">
-        <button ng-if="(form.options.multiple == 'true') || (form.options.multiple == true)"
-                type="button" class="btn btn-default" sf-changed="form" schema-validate="form" ng-model="$$value$$"
-                data-placeholder="{{form.placeholder || form.schema.placeholder || ('placeholders.select')}}"
-                data-html="1" data-multiple="1" data-max-length="{{form.options.inlineMaxLength}}"
-                data-max-length-html="{{form.options.inlineMaxLengthHtml}}"
-                bs-options="item.value as item.name for item in form.titleMap | selectFilter:this:$$value$$:&quot;$$value$$&quot;"
-                bs-select>
-        </button>
-        <button ng-if="!((form.options.multiple == 'true') || (form.options.multiple == true))"
-                type="button" class="btn btn-default" sf-changed="form" schema-validate="form" ng-model="$$value$$"
-                data-placeholder="{{form.placeholder || form.schema.placeholder || ('placeholders.select')}}"
-                data-html="1"
-                bs-options="item.value as item.name for item in form.titleMap | selectFilter:this:$$value$$:&quot;$$value$$&quot;"
-                bs-select>
-        </button>
+    
+        <div 
+           ng-class="{'input-group': (form.fieldAddonLeft || form.fieldAddonRight)}">
+    
+            <span ng-if="form.fieldAddonLeft"
+              class="input-group-addon"
+              ng-bind-html="form.fieldAddonLeft"></span>
+        
+            <button ng-if="(form.options.multiple == 'true') || (form.options.multiple == true)"
+                    type="button" class="btn btn-default form-control" sf-changed="form" schema-validate="form" ng-model="$$value$$"
+                    data-placeholder="{{form.placeholder || form.schema.placeholder || ('placeholders.select')}}"
+                    data-html="1" data-multiple="1" data-max-length="{{form.options.inlineMaxLength}}"
+                    data-max-length-html="{{form.options.inlineMaxLengthHtml}}"
+                    bs-options="item.value as item.name for item in form.titleMap | selectFilter:this:$$value$$:&quot;$$value$$&quot;"
+                    bs-select>
+            </button>
+            <button ng-if="!((form.options.multiple == 'true') || (form.options.multiple == true))"
+                    type="button" class="btn btn-default form-control" sf-changed="form" schema-validate="form" ng-model="$$value$$"
+                    data-placeholder="{{form.placeholder || form.schema.placeholder || ('placeholders.select')}}"
+                    data-html="1"
+                    bs-options="item.value as item.name for item in form.titleMap | selectFilter:this:$$value$$:&quot;$$value$$&quot;"
+                    bs-select>
+            </button>
+        
+            <span ng-if="form.fieldAddonRight"
+              class="input-group-addon"
+              ng-bind-html="form.fieldAddonRight"></span>
+        
+        </div>
+                
         <span class="help-block">{{ (hasError() && errorMessage(schemaError())) || form.description}} </span>
     </div>
 </div>
-
