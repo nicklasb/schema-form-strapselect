@@ -9,7 +9,8 @@
       <ui-select-match placeholder="{{form.placeholder || form.schema.placeholder || ('placeholders.select' | translate)}}">{{$item.name}}</ui-select-match>
       <ui-select-choices repeat="item in form.titleMap | propsFilter: {name: $select.search}"
          refresh="populateTitleMap(form, $select.search)"
-         refresh-delay="form.options.refreshDelay">
+         refresh-delay="form.options.refreshDelay"
+         group-by="form.options.groupBy">
         <div ng-bind-html="item.name | highlight: $select.search"></div>
       </ui-select-choices>
     </ui-select>
