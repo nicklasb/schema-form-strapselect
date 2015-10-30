@@ -4,7 +4,7 @@
   "main": [
     "angular-schema-form-dynamic-select.min.js"
   ],
-  "version": "0.12.4",
+  "version": "0.12.5",
   "authors": [
     "Cheng Zhu<cheng@aqmin.com>",
     "Stevehu",

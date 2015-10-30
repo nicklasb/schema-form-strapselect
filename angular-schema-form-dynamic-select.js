@@ -447,4 +447,5 @@ angular.module('schemaForm').filter('selectFilter', [function ($filter) {
     };
 }]);
 
+return angularSchemaFormDynamicSelect;
 }));

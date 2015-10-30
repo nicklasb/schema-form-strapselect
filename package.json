@@ -1,6 +1,6 @@
 {
   "name": "angular-schema-form-dynamic-select",
-  "version": "0.12.4",
+  "version": "0.12.5",
   "description": "Dynamic select add-on for angular schema form",
   "scripts": {
     "test": "rm -fr coverage && ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS karma.conf.js"
