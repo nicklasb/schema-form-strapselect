@@ -168,7 +168,13 @@ angular.module('schemaForm').controller('dynamicSelectController', ['$scope', '$
     $scope.initFiltering = function (localModel) {
         if ($scope.form.options.filterTriggers) {
             $scope.form.options.filterTriggers.forEach(function (trigger) {
-                $scope.$parent.$watch(trigger, $scope.triggerTitleMap)
+                if(trigger.indexOf("[]") === -1) {
+                    $scope.$parent.$watch(trigger, $scope.triggerTitleMap);
+                } else {
+                    //watch array
+                    trigger = trigger.replace("[]", "");
+                    $scope.$parent.$watch(trigger, $scope.triggerTitleMap, true);
+                }
 
             });
         }
@@ -431,4 +437,5 @@ angular.module('schemaForm').filter('selectFilter', [function ($filter) {
     };
 }]);
 
+return angularSchemaFormDynamicSelect;
 }));
