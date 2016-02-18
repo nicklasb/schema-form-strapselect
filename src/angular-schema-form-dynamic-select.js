@@ -172,25 +172,25 @@ angular.module('schemaForm').controller('dynamicSelectController', ['$scope', '$
 
         if (newOptions && "map" in newOptions && newOptions .map) {
             var current_row = null,
-			final = newOptions.map.nameProperty.length - 1,
-			separator = newOptions.map.separatorValue ? newOptions.map.separatorValue : ' - ';
-				data.forEach(function (current_row) {
-                current_row["value"] = current_row[newOptions .map.valueProperty];
-				//check if the value passed is a string or not
-				if(typeof newOptions.map.nameProperty != 'string'){
-					//loop through the object/array
-                    var newName = "";
-					for (var i in newOptions.map.nameProperty) {
-    					newName += current_row[newOptions .map.nameProperty[i]]; 
-    					if(i != final){newName += separator};
-					}	
-                    current_row["name"] = newName; //init the 'name' property
-				}
-                else{
-					//if it is a string
-					current_row["name"] = current_row[newOptions .map.nameProperty];
-				}
-                form.titleMap.push(current_row);
+            final = newOptions.map.nameProperty.length - 1,
+            separator = newOptions.map.separatorValue ? newOptions.map.separatorValue : ' - ';
+            data.forEach(function (current_row) {
+              current_row["value"] = current_row[newOptions .map.valueProperty];
+              //check if the value passed is a string or not
+              if(typeof newOptions.map.nameProperty != 'string'){
+                //loop through the object/array
+                var newName = "";
+                for (var i in newOptions.map.nameProperty) {
+                  newName += current_row[newOptions .map.nameProperty[i]];
+                  if(i != final){newName += separator};
+                }
+                current_row["name"] = newName; //init the 'name' property
+              }
+              else{
+                //if it is a string
+                current_row["name"] = current_row[newOptions .map.nameProperty];
+              }
+              form.titleMap.push(current_row);
             });
 
         }
@@ -340,21 +340,23 @@ angular.module('schemaForm').controller('dynamicSelectController', ['$scope', '$
     };
 
     $scope.uiMultiSelectInitInternalModel = function(supplied_model)
-    {
-
-
-        console.log("$scope.externalModel: Key: " +$scope.form.key.toString() + " Model: " + supplied_model.toString());
-        $scope.externalModel = supplied_model;
-        $scope.internalModel = [];
-        if ($scope.form.titleMap) {
-            if (supplied_model !== undefined && angular.isArray(supplied_model)){
-                supplied_model.forEach(function (value) {
-                        $scope.internalModel.push($scope.find_in_titleMap(value));
-                    }
-                )
-            }
-        }
-    };
+        {
+          // console.log("$scope.externalModel: Key: " +$scope.form.key.toString() + " Model: " + supplied_model.toString());
+          $scope.externalModel = supplied_model;
+          $scope.internalModel = [];
+          if ($scope.form.titleMap) {
+              if (supplied_model !== undefined && angular.isArray(supplied_model) && (supplied_model.filter(function(e) { return e.value }).length === 0)){
+                  supplied_model.forEach(function (value) {
+                          $scope.internalModel.push($scope.find_in_titleMap(value));
+                      }
+                  )
+              } else if (supplied_model.filter(function(e) { return e.value }).length > 0) {
+                supplied_model.forEach(function(value){
+                  $scope.internalModel.push(value);
+                })
+              }
+          }
+      };
 
 }]);
 
