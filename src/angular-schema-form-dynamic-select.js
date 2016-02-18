@@ -347,11 +347,15 @@ angular.module('schemaForm').controller('dynamicSelectController', ['$scope', '$
         $scope.externalModel = supplied_model;
         $scope.internalModel = [];
         if ($scope.form.titleMap) {
-            if (supplied_model !== undefined && angular.isArray(supplied_model)){
+            if (supplied_model !== undefined && angular.isArray(supplied_model && (supplied_model.filter(function(e) { return e.value }).length === 0)){
                 supplied_model.forEach(function (value) {
                         $scope.internalModel.push($scope.find_in_titleMap(value));
                     }
                 )
+            } else if (supplied_model.filter(function(e) { return e.value }).length > 0) {
+                supplied_model.forEach(function (value) {
+                    $scope.internalModel.push(value);
+                })
             }
         }
     };
