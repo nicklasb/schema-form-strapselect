@@ -8,6 +8,7 @@
                    ng-if="!(form.options.tagging||false)" theme="bootstrap" ng-disabled="form.disabled"
                    on-select="$$value$$=$item.value" class="{{form.options.uiClass}}">
             <ui-select-match
+                    allow-clear="{{form.options.allowClear||false}}"
                     placeholder="{{form.placeholder || form.schema.placeholder || ('placeholders.select' | translate)}}">
                 {{select_model.selected.name}}
             </ui-select-match>
