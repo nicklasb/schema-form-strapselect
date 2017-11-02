@@ -285,11 +285,11 @@ Therefore, a "map"-property is provided. <br />
 The property in valueProperty says in what property to look for the value, and nameProperty the name.
 In this case:
 ```js
-{nodeId : 1, nodeName: "Test", "nodeType": "99"}
+{"nodeId" : 1, "nodeName": "Test", "nodeType": "99"}
 ```
 which cannot be used, is converted into:
 ```js
-{value : 1, name: "Test", nodeId : 1, nodeName: "Test", "nodeType": "99"}
+{"value" : 1, "name": "Test", "nodeId" : 1, nodeName: "Test", "nodeType": "99"}
 ```
 which is the native format with the old options retained to not destroy auxiliary information.
 For example, a field like "nodeType" might be used for filtering(see Filters section, below). 
@@ -297,13 +297,13 @@ The options for that mapping look like this:
 ```js
  {
    "key": "multiselectdynamic_http_get",
-   "type": 'strapselect',
+   "type": "strapselect",
    "options": {
         "multiple": "true"
         "httpGet": {
             "url": "test/testdata_mapped.json"
         },
-        "map" : {valueProperty: "nodeId", nameProperty: "nodeName"}
+        "map" : {"valueProperty": "nodeId", nameProperty: "nodeName"}
    }
  },    
 ```     
@@ -311,7 +311,7 @@ The nameProperty can also be an array, in which case ASFDS looks for the first v
 For example, in this case, one wants to first show the caption, and if that is not available, the name:
 
 ```js
-"map" : {valueProperty: "nodeId", nameProperty: ["nodeCaption", "nodeName"]}
+"map" : {"valueProperty": "nodeId", nameProperty: ["nodeCaption", "nodeName"]}
 ```
      
 *For more complicated mappings, and situations where the source data is
